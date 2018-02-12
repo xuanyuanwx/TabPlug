@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="jQuery/jquery.min.js"></script>
+<!-- <link rel="stylesheet" href="jQuerymobile/jquery.mobile-1.4.5.min.css"> -->
+<!-- <script type="text/javascript" src="jQuerymobile/jquery.mobile-1.4.5.min.js"></script> -->
+<style>
+#div1 ul{ margin-left:-35px; }
+#div1 ul li{ list-style-type: none; width: 200px;height: 50px; border:1px solid #ccc; display: none; }
+.actived{ background: yellow; }
+</style>
+</head>
+<script>
+window.onload=function(){
+	//获取相关元素
+	var oDiv=document.getElementById("div1");
+	var oUl=document.getElementById("ul1");
+	var aIpt=oDiv.getElementsByTagName("input");
+	var aLi=oUl.getElementsByTagName("li");
+	for(var i=0;i<aIpt.length;i++){
+		aIpt[i].index=i;//目标元素设置index属性值
+		aIpt[i].onclick=function(){//按钮操作
+			for(var i=0;i<aIpt.length;i++){
+				aIpt[i].className=null;//按钮全部设置没有背景样式
+				aLi[i].style.display="none";//内容全部设置隐藏
+			};
+			this.className="actived";//目标元素添加背景色
+			aLi[this.index].style.display="block";//目标元素关联相关内容设为隐藏
+		};
+	}
+}
+</script>
+<body>
+	<div id="div1">
+		<input class="actived" type="button" value="家具" >
+		<input type="button" value="家电" >
+		<input type="button" value="食品" >
+		<input type="button" value="衣服" >
+		<ul id="ul1">
+			<li style="display:block;">家具</li>
+			<li>家电</li>
+			<li>食品</li>
+			<li>衣服</li>
+		</ul>
+	</div>
+</body>
+</html>
